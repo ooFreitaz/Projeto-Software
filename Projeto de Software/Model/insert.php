@@ -25,14 +25,14 @@ if (inserirRegistro($conexao, $nome,$cpf,$email,$senha)) {
         alert(\"Registrado com sucesso!.\");
     </script>";
 
-header("refresh: 1; url=nav.php");
+header("refresh: 1; url=../View/html/nav_logado.php");
 exit();
-header("Location: nav.php");
+header("Location: ../View/html/nav_logado.php");
 
 die();
 } else {
     echo "
-    <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=conexao.php'>
+    <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=../View/html/cadastro.php'>
     <script type=\"text/javascript\">
         alert(\"Erro ao registrar.\");
     </script>

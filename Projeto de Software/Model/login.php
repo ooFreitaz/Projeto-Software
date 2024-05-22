@@ -35,14 +35,14 @@ if ($result->num_rows > 0) {
 					</script>
 				";
 
-    header("refresh: 1; url=nav.php");
+    header("refresh: 1; url=../View/html/nav_logado.php");
     exit();
     
 
    
 } else {
     echo "
-					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=logintela.php'>
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=../View/html/logintela.php'>
 					<script type=\"text/javascript\">
 						alert(\"Email ou senha incorretos!\");
 					</script>
@@ -50,6 +50,7 @@ if ($result->num_rows > 0) {
 }
 
 $_SESSION['nome'] = $nome;
+
 
 $conn->close();
 ?>
