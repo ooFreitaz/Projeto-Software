@@ -1,6 +1,8 @@
 <?php
 require ('../Controller/conexao.php');
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"];
     $cpf = $_POST["cpf"];
@@ -20,6 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 if (inserirRegistro($conexao, $nome,$cpf,$email,$senha)) {
+
+    // Salvando dados na sessão
+    $_SESSION['nome'] = $nome;
+    $_SESSION['email'] = $email;
     echo "
     <script type=\"text/javascript\">
         alert(\"Registrado com sucesso!.\");

@@ -7,48 +7,77 @@
     <link rel="stylesheet" href="../css/perfil.css">
 </head>
 <body>
-    <?php
+<body>
+<?php
+
+session_start(); 
+
+if(isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+} 
+
+?>
+
+    <div id="fundo"> 
+        <div id="fundobranco">
+        <?php
+
+if(isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+} else {
+
+}
     require ('../../Controller/conexao.php');
 
-    if (isset($_GET["id"])) {
-    $id = $_GET["id"];
+    function listarRegistros($conexao)
+        {
+            if(isset($_SESSION['email'])) {
+                $email = $_SESSION['email'];
+            } 
+            else {
+            
+            }
 
-    // Função para listar todos os registros do banco de dados
-    function listarRegistros($conexao, $id) {
-        $sql = "SELECT * FROM usuario WHERE id = $id";
+        $sql = "SELECT * FROM usuario WHERE email='$email'";
         $stmt = $conexao->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
-        // Listar registros
-        $registros = listarRegistros($conexao, $id);
+
+        $registros = listarRegistros($conexao);
+        $registros = listarRegistros($conexao, $email);
         foreach ($registros as $registro) {
-            if ($registro['id'] == $id) {
+            if ($registro['email'] == $email) {
                 $aux = true;
             }
         }
-}
-    ?>
 
-<h1>Editar Perfil</h1>
+?>
     <?php if (isset($aux)) : ?>
-        <form action="../../Model/update.php" method="post">
-            <input type="hidden" name="id" value="<?php echo $registro['id']; ?>">
+        <form action="update.php" method="post">
+
+            <label>CPF:</label>
+            <input type="text" name="cpf" id="data" maxlength="14" oninput="formatarCPF()"  value="<?php echo $registro['cpf']; ?>" required>
+            <br>
+            <div></div>
             <label>Nome:</label>
             <input type="text" name="nome" value="<?php echo $registro['nome']; ?>" required>
             <br>
-            <label>CPF:</label>
-            <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" oninput="maskcpf()" name="cpf" value="<?php echo $registro['cpf']; ?>" required>
+            <div></div>
+            <label>Email: </label>
+            <input type="text" name="email" value="<?php echo $registro['email']; ?>" required>
             <br>
-            <label>Email:</label>
-            <input type="text" name="sexo" value="<?php echo $registro['email']; ?>" required>
-            <br>
+            <div></div>
             <label>Senha:</label>
-            <input type="text" name="endereco" value="<?php echo $registro['senha']; ?>" required>
+            <input type="text" name="senha" value="<?php echo $registro['senha']; ?>" required>
             <br>
-            <input type="submit" value="Alterar">
+            <div></div>
+            <input type="submit" id="" value="Alterar">
         </form>
     <?php else : ?>
         <p>Usuario não encontrado.</p>
     <?php endif; ?>
+    </div>
+        </div>
+
 </body>
 </html>

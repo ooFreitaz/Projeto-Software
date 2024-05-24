@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../css/nav_logado.css">
 </head>
 <body>
+    <?php include '../../Model/funcoes.php' ?>
     <a href="perfil.php">Perfil</a>
+    <?php SalvaNome();
+    SalvaEmail(); ?>
 </body>
 </html>

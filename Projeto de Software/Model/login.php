@@ -26,6 +26,10 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // Login bem-sucedido
 
+    // Salva o ID do usuário em uma sessão
+    $email = $_POST['email'];
+    $_SESSION['email'] = $email;
+
     $row = $result->fetch_assoc();
     $nome = $row['nome'];
     $_SESSION['nome'] = $nome;
