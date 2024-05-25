@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seja Bem Vindo!</title>
-    <link rel="stylesheet" href="../css/nav_logado.css">
+    <link rel="stylesheet" href="../css/_nav_logado.css">
 </head>
 <body>
-    <?php include '../../Model/funcoes.php' ?>
-    <a href="perfil.php">Perfil</a>
-    <?php SalvaNome();
-    SalvaEmail(); ?>
+    <a href="perfil.php" class="link">Perfil</a>
+
+    <form action="../../Model/logout.php" method="post">
+        <button class="button" type="submit">Logout</button>
+    </form>
+
+
+    <script src="../js/funcoes.js"></script>
 </body>
 </html>

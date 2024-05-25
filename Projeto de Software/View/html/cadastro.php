@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
-    <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="stylesheet" href="../css/_cadastro.css">
 </head>
 <body>
 
@@ -23,10 +23,11 @@
             <input type="password" name="senha" class="input" required>
             <button>Cadastrar</button>
         </div>
+        <div>Ja tem cadastro? <a href="logintela.php">Faça login</a></div>
     </form>
     
 
 
-    <script src="../js/cadastro.js"></script>
+    <script src="../js/funcoes.js"></script>
 </body>
 </html>

@@ -27,34 +27,28 @@ if ($result->num_rows > 0) {
     // Login bem-sucedido
 
     // Salva o ID do usuário em uma sessão
-    $email = $_POST['email'];
-    $_SESSION['email'] = $email;
-
     $row = $result->fetch_assoc();
     $nome = $row['nome'];
+    $cpf = $row['cpf'];  // Obter o valor da coluna 'cpf'
     $_SESSION['nome'] = $nome;
+    $_SESSION['cpf'] = $cpf;  // Armazenar o valor do CPF na sessão
+
     echo "
-					<script type=\"text/javascript\">
-						alert(\"Bem vindo {$nome}\");
-					</script>
-				";
+        <script type=\"text/javascript\">
+            alert(\"Bem vindo {$nome}\");
+        </script>
+    ";
 
     header("refresh: 1; url=../View/html/nav_logado.php");
     exit();
-    
-
-   
 } else {
     echo "
-					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=../View/html/logintela.php'>
-					<script type=\"text/javascript\">
-						alert(\"Email ou senha incorretos!\");
-					</script>
-				";
+        <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=../View/html/logintela.php'>
+        <script type=\"text/javascript\">
+            alert(\"Email ou senha incorretos!\");
+        </script>
+    ";
 }
-
-$_SESSION['nome'] = $nome;
-
 
 $conn->close();
 ?>

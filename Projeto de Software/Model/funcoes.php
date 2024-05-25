@@ -15,4 +15,13 @@ function SalvaEmail(){
     } 
     echo $email;
 }
+
+function SalvaCpf(){
+    if(isset($_SESSION['cpf'])) {
+        $cpf = $_SESSION['cpf'];
+    } 
+    echo $cpf;
+}
+
+
 ?>

@@ -25,7 +25,8 @@ if (inserirRegistro($conexao, $nome,$cpf,$email,$senha)) {
 
     // Salvando dados na sessão
     $_SESSION['nome'] = $nome;
-    $_SESSION['email'] = $email;
+    $_SESSION['cpf'] = $cpf;
+
     echo "
     <script type=\"text/javascript\">
         alert(\"Registrado com sucesso!.\");
