@@ -67,10 +67,10 @@ if(isset($_SESSION['cpf'])) {
 
             <button class="button" type="submit">Alterar</button>
 
-            <button class="button" onclick="confirmarDelecao()">Deletar Conta</button>
+            
         </form>
 
-        
+        <button class="button" onclick="confirmarDelecao()">Deletar Conta</button>
 
 
         <!--Esse form de baixo nao precisa formatar pq ele é invisivel -->
