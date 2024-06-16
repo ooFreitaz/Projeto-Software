@@ -10,7 +10,7 @@
 
     <?php require ("../../Controller/conexao.php"); ?>
    
-    <form action="../../Model/insert.php" method="post">
+    <form action="../../Model/insert.php" method="post" id="cadastroForm">
         <div><h1>Cadastre-se</h1></div>
         <div id="form">
             <label for="nome" class="label">Nome</label>
@@ -20,14 +20,19 @@
             <label for="email" class="label">Email</label>
             <input type="email" name="email" class="input" required>
             <label for="senha" class="label">Senha</label>
-            <input type="password" name="senha" class="input" required>
-            <button>Cadastrar</button>
+            <input type="password" name="senha" id="senha" class="input" required>
+            <input type="checkbox" id="mostrarSenha" class="show-password">
+                
+            <div id="senha-feedback"></div> <!-- Feedback da senha -->
+            <button type="submit">Cadastrar</button>
         </div>
-        <div>Ja tem cadastro? <a href="logintela.php">Faça login</a></div>
+        <div>Já tem cadastro? <a href="logintela.php">Faça login</a></div>
     </form>
     
 
 
     <script src="../js/funcoes.js"></script>
+    <script src="../js/valida_senha.js"></script>
+    <script src="../js/mostra_senha.js"></script>
 </body>
 </html>
