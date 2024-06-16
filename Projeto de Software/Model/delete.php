@@ -1,24 +1,29 @@
 <?php
-require('../Controller/conexao.php'); // Importa o arquivo de conexão
+require ('../Controller/conexao.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $cpf = $_POST["cpf"]; // Obtém o CPF do parâmetro POST
+    $id = $_POST["id"];
 
-    // Função para deletar o registro no banco de dados
-    function excluirRegistro($conexao, $cpf) {
-        $sql = "DELETE FROM usuario WHERE cpf = :cpf"; // Consulta SQL para deletar usuário pelo CPF
+    function deletarRegistro($conexao, $id) {
+        $sql = "DELETE FROM usuario WHERE id = :id";
         $stmt = $conexao->prepare($sql);
-        $stmt->bindParam(':cpf', $cpf); // Liga o parâmetro :cpf ao valor do CPF
-        return $stmt->execute(); // Executa a consulta e retorna verdadeiro ou falso
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
     }
 
-    // Verifica o resultado da exclusão
-    if (excluirRegistro($conexao, $cpf)) {
-        // Se a exclusão foi bem-sucedida, exibe um alerta e redireciona para cadastro.php
-        echo "<script>alert('Conta excluída com sucesso!'); window.location.href='../View/html/nav.php';</script>";
+    if (deletarRegistro($conexao, $id)) {
+        echo "
+        <script type=\"text/javascript\">
+            alert(\"Conta deletada com sucesso.\");
+        </script>";
+        header("refresh: 1; url=../View/html/cadastro.php");
+        exit();
     } else {
-        // Se houve um erro ao excluir o registro, exibe um alerta com a mensagem de erro
-        echo "<script>alert('Erro ao excluir a conta.');</script>";
+        echo "
+        <script type=\"text/javascript\">
+            alert(\"Erro ao deletar a conta.\");
+        </script>";
+        header("refresh: 1; url=../View/html/perfil.php");
     }
 }
 ?>

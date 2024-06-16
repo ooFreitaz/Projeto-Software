@@ -9,10 +9,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `cpf` CHAR(11) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `senha` VARCHAR(50) NOT NULL,
+  `imagem` VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-COMMIT;
-
+)
 
 
 

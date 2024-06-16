@@ -1,6 +1,4 @@
 <?php
-
-// Conectar ao banco de dados
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -10,28 +8,22 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 session_start();
 
-// Verificar a conexão
 if ($conn->connect_error) {
     die("Erro na conexão: " . $conn->connect_error);
 }
 
-// Obter os valores do formulário
 $email = $_POST['email'];
 $password = $_POST['senha'];
 
-// Consulta SQL para verificar se o email e a senha estão corretos
-$sql = "SELECT * FROM USUARIO WHERE email='$email' AND senha='$password'";
+$sql = "SELECT * FROM usuario WHERE email='$email' AND senha='$password'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // Login bem-sucedido
-
-    // Salva o ID do usuário em uma sessão
     $row = $result->fetch_assoc();
+    $id = $row['id'];
     $nome = $row['nome'];
-    $cpf = $row['cpf'];  // Obter o valor da coluna 'cpf'
+    $_SESSION['id'] = $id;
     $_SESSION['nome'] = $nome;
-    $_SESSION['cpf'] = $cpf;  // Armazenar o valor do CPF na sessão
 
     echo "
         <script type=\"text/javascript\">
